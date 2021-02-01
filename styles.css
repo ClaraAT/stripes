@@ -5,6 +5,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 div {
     display: block;
@@ -17,21 +18,82 @@ div {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    position: relative;/*aunque ya se vea bien, indico una position para que funcione el overflow -not sure why-*/
+    overflow: hidden;
+
+}
+/*TRANSITION STRIP*/
+.stripcontent:before{
+    content: ""; /*Ha de ir siempre con el pseudo-elemento :before o :after para especificar el contenido*/
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 20vw;
+    height: 100vh;
+    transform: skew(30deg) scaleY(1);
+    transition: width 1s;
+}
+.stripcontent:hover:before{ /*:hover ha de ir antes que el :before !!!!*/
+    width: 50vw;
 }
 
 /*EACH INDIVIDUAL STRIP*/
 #strip1{
     background-color:#244F75;
+    animation-name: animstripe1;
+    animation-duration: 1s;
 }
 #strip2{
     background-color:#60BFBF;
+    animation-name: animstripe2;
+    animation-duration: 1s;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
 }
 #strip3{
     background-color:#8C4B7E;
+    animation-name: animstripe3;
+    animation-duration: 1s;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
 }
 #strip4{
     background-color:#F8BB44;
+    animation-name: animstripe4;
+    animation-duration: 1s;
+    animation-delay: 0.6s;
+    animation-fill-mode: both;
 }
 #strip5{
     background-color:#F24B4B;
+    animation-name: animstripe5;
+    animation-duration: 0.5s;
+    animation-duration: 1s;
+    animation-delay: 0.8s;
+    animation-fill-mode: both;
+}
+
+i{
+    font-size: 0.7em;
+}
+/*ANIMACIONES*/
+@keyframes animstripe1{
+    0% {transform: translate(-20vw, 0px);}
+    100%{transform: translate(0px, 0px);}
+}
+@keyframes animstripe2{
+    0% {transform: translate(0px, -100vh);}
+    100%{transform: translate(0px, 0px);}
+}
+@keyframes animstripe3{
+    0% {transform: translate(0px, 100vh);}
+    100%{transform: translate(0px, 0px);}
+}
+@keyframes animstripe4{
+    0% {transform: translate(0px, -100vh);}
+    100%{transform: translate(0px, 0px);}
+}
+@keyframes animstripe5{
+    0% {transform: translate(20vw, 0px);}
+    100%{transform: translate(0px, 0px);}
 }
